@@ -15,6 +15,14 @@ function sortPart(file, start, end) {
   return newFile
 }
 
+function pascalCase(text) {
+  return text
+    .trim()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('')
+}
+
 module.exports = function (plop) {
   plop.setGenerator('icon', {
     description: 'Generate an tsx icon to use with the Icon Component',
@@ -24,9 +32,11 @@ module.exports = function (plop) {
         name: 'icon',
         message: 'The name of the icon',
         validate: function (value) {
-          if ((/.+/).test(value)) { return true; }
-          return 'Icon name is required';
-        }
+          if (/.+/.test(value)) {
+            return true
+          }
+          return 'Icon name is required'
+        },
       },
     ],
     actions: [
