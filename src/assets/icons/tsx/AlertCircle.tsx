@@ -1,6 +1,8 @@
-import { IconBase } from '@components'
 import React from 'react'
+
 import { Path, Svg } from 'react-native-svg'
+
+import { IconBase } from '@components'
 
 export function AlertCircle({ color = '#4F4F4F', size = 24 }: IconBase) {
   return (
