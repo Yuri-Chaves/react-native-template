@@ -1,8 +1,9 @@
+import React from 'react'
+import { Pressable } from 'react-native'
+
 import { useAppTheme } from '@hooks'
 import * as icons from '@icons'
 import { ThemeColors } from '@theme'
-import React from 'react'
-import { Pressable } from 'react-native'
 
 export interface IconBase {
   size?: number
@@ -29,9 +30,19 @@ export function Icon({ name, color = 'gray2', size, onPress }: Props) {
 }
 
 const iconRegistry = {
+  accountCircle: icons.AccountCircle,
+  accountCircleOutline: icons.AccountCircleOutline,
   alert: icons.Alert,
   alertCircle: icons.AlertCircle,
   alertOctagon: icons.AlertOctagon,
+  checkCircle: icons.CheckCircle,
+  eye: icons.Eye,
+  eyeOff: icons.EyeOff,
+  eyeOffOutline: icons.EyeOffOutline,
+  eyeOutline: icons.EyeOutline,
+  formTextbox: icons.FormTextbox,
+  formTextboxPassword: icons.FormTextboxPassword,
+  informationVariant: icons.InformationVariant,
 }
 
 type IconType = typeof iconRegistry
