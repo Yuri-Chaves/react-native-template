@@ -31,6 +31,8 @@ export const palette = {
   aux2Shadow: '#EE60057F',
 
   placeholder: '#A9A9A9',
+
+  transparent: '#0000',
 }
 
 const lightTheme = {
