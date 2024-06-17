@@ -1,4 +1,5 @@
 import { createTheme } from '@shopify/restyle'
+
 import { colors, palette } from './colors'
 
 export const lightTheme = createTheme({
@@ -7,11 +8,17 @@ export const lightTheme = createTheme({
     ...colors.lightTheme,
   },
   spacing: {
+    s2: 2,
+    s4: 4,
     s8: 8,
     s16: 16,
     s24: 24,
+    s32: 32,
   },
-  borderRadii: {},
+  borderRadii: {
+    br4: 4,
+    br16: 16,
+  },
   textVariants: {
     defaults: {},
   },
