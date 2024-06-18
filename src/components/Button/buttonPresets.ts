@@ -16,7 +16,7 @@ export const buttonPresets: Record<
   primary: {
     default: {
       container: {
-        backgroundColor: 'androidBlue',
+        backgroundColor: 'primary',
       },
       content: 'white',
     },
@@ -31,9 +31,9 @@ export const buttonPresets: Record<
     default: {
       container: {
         borderWidth: 2,
-        borderColor: 'androidBlue',
+        borderColor: 'primary',
       },
-      content: 'androidBlue',
+      content: 'primary',
     },
     disabled: {
       container: {

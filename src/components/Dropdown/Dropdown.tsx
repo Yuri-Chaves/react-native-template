@@ -54,7 +54,7 @@ export function Dropdown({
     : 'disabledInput'
 
   const stroke: ThemeColors = inFocus
-    ? 'androidBlue'
+    ? 'secondary'
     : onError
     ? 'errorD'
     : 'borderColor'
