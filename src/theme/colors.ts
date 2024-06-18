@@ -23,6 +23,9 @@ export const palette = {
   errorM: '#EB5757',
   errorL: '#F6EAEA',
 
+  primary: '#A36FF7',
+  secondary: '#4BC3A4',
+
   infoShadow: '#2F80ED7F',
   successShadow: '#05AC4B7F',
   warningShadow: '#D881007F',
