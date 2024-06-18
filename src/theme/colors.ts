@@ -39,6 +39,7 @@ const lightTheme = {
   backgroundColor: palette.gray6,
   backgroundContrast: palette.gray1,
 
+  disabledInput: palette.gray5,
   borderColor: palette.gray2,
 
   shadow: '#3333337F',
@@ -48,6 +49,7 @@ const darkTheme: typeof lightTheme = {
   backgroundColor: palette.gray1,
   backgroundContrast: palette.gray6,
 
+  disabledInput: palette.gray3,
   borderColor: palette.gray5,
 
   shadow: '#f4f5f67F',
