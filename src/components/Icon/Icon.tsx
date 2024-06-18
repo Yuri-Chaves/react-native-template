@@ -38,6 +38,7 @@ const iconRegistry = {
   checkCircle: icons.CheckCircle,
   chevronDown: icons.ChevronDown,
   chevronUp: icons.ChevronUp,
+  delete: icons.Delete,
   eye: icons.Eye,
   eyeOff: icons.EyeOff,
   eyeOffOutline: icons.EyeOffOutline,
