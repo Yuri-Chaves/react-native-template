@@ -10,5 +10,9 @@ export * from './Table/Table'
 export * from './Text/Text'
 export * from './TextBox/TextBox'
 export * from './TextInput/TextInput'
-// exporting Types
+
+// Exporting Forms
+export * from './Forms/AuthForm/AuthForm'
+
+// Exporting Types
 export type { AlertOptions } from './Alert/AlertTypes'
