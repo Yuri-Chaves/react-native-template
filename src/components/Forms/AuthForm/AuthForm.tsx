@@ -50,10 +50,10 @@ export function AuthForm({
               label="User"
               autoFocus
               autoCapitalize="none"
-              placeholder="Type any username"
+              placeholder="Type your name"
               value={field.value}
               onChangeText={field.onChange}
-              onError={inError || !fieldState.error?.message}
+              onError={inError || !!fieldState.error?.message}
               errorMessage={fieldState.error?.message}
               leftIcon="accountCircleOutline"
               onSubmitEditing={() => passwordRef.current?.focus()}
@@ -71,10 +71,10 @@ export function AuthForm({
               forwardRef={passwordRef}
               label="Password"
               autoCapitalize="none"
-              placeholder="Type something"
+              placeholder="Type anything"
               value={field.value}
               onChangeText={field.onChange}
-              onError={inError}
+              onError={inError || !!fieldState.error?.message}
               errorMessage={fieldState.error?.message}
               onSubmitEditing={handleSubmit(onSubmit)}
               eyeOutlined
