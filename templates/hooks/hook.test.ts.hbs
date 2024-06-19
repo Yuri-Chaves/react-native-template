@@ -1,0 +1,11 @@
+import { renderHook } from 'test-utils'
+
+import { use{{pascalCase name}} } from '../use{{pascalCase name}}'
+
+describe('use{{pascalCase name}}', () => {
+  test("this is an example of a test, it only works as long as the created hook hasn't been altered.", () => {
+    const { result } = renderHook(() => use{{pascalCase name}}())
+
+    expect(result.current.example).not.toBe('')
+  })
+})

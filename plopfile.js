@@ -61,4 +61,46 @@ module.exports = function (plop) {
       },
     ],
   })
+  plop.setGenerator('hook', {
+    description: 'Generate a custom hook',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'hook name(without "use" prefix)',
+      },
+      {
+        type: 'confirm',
+        name: 'withTest',
+        message: 'Do you want to create a test file?',
+        default: false,
+      },
+    ],
+    actions: data => {
+      let actions = [
+        {
+          type: 'add',
+          path: 'src/hooks/use{{pascalCase name}}.ts',
+          templateFile: 'templates/hooks/hook.ts.hbs',
+        },
+        {
+          type: 'modify',
+          path: 'src/hooks/index.ts',
+          pattern: /(\/\/ Export custom hooks)/g,
+          transform: template => sortFile(template),
+          template: "$1\nexport * from './use{{pascalCase name}}'",
+        },
+      ]
+
+      if (data && data.withTest) {
+        actions.push({
+          type: 'add',
+          path: 'src/hooks/__tests__/use{{pascalCase name}}.test.ts',
+          templateFile: 'templates/hooks/hook.test.ts.hbs',
+        })
+      }
+
+      return actions
+    },
+  })
 }
