@@ -67,7 +67,7 @@ export function TextInput({
     flexShrink: 1,
     fontFamily: fontFamily,
     ...$fontSizes[inputTextProps?.preset || 'LabelLarge'],
-    height: 20,
+    height: 32,
     color: colors[inputTextProps?.color || 'borderColor'],
   }
 
@@ -148,7 +148,7 @@ export function TextInput({
           )}
           <Box flexDirection="row" flex={1} alignItems="center">
             <Box
-              top={inFocus || rNTextInputProps.value ? -20.5 : -2}
+              top={inFocus || rNTextInputProps.value ? -15.0 : 5}
               paddingHorizontal="s4"
               flexDirection="row"
               position="absolute"
