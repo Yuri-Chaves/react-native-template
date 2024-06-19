@@ -46,6 +46,7 @@ const iconRegistry = {
   formTextbox: icons.FormTextbox,
   formTextboxPassword: icons.FormTextboxPassword,
   informationVariant: icons.InformationVariant,
+  login: icons.Login,
 }
 
 type IconType = typeof iconRegistry
