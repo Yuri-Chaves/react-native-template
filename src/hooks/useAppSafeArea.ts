@@ -6,9 +6,9 @@ export function useAppSafeArea() {
   const { top, right, bottom, left } = useSafeAreaInsets()
   const { spacing } = useAppTheme()
   return {
-    top: Math.max(top, spacing.s24),
+    top: Math.max(top, spacing.s16),
     right: Math.max(right, spacing.s16),
-    bottom: Math.max(bottom, spacing.s24),
+    bottom: Math.max(bottom, spacing.s16),
     left: Math.max(left, spacing.s16),
   }
 }
