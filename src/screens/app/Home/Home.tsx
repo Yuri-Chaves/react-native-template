@@ -37,6 +37,7 @@ export function Home({ navigation }: AppScreenProps<'home'>) {
             title="InfinityScroll"
             onPress={() => navigation.navigate('facts')}
           />
+          <Button title="Inputs" onPress={() => navigation.navigate('input')} />
         </Box>
       </Box>
     </Screen>

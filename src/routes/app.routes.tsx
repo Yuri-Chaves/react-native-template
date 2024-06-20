@@ -1,5 +1,12 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { AlertScreen, DropdownScreen, Facts, Home } from '@screens'
+import {
+  AlertScreen,
+  DropdownScreen,
+  Facts,
+  Home,
+  IconScreen,
+  InputsScreen,
+} from '@screens'
 import React from 'react'
 
 export type AppStackParamList = {
@@ -7,6 +14,8 @@ export type AppStackParamList = {
   facts: undefined
   dropdown: undefined
   alert: undefined
+  icon: undefined
+  input: undefined
 }
 
 const Stack = createNativeStackNavigator<AppStackParamList>()
@@ -17,6 +26,8 @@ export function AppRoutes() {
       <Stack.Screen name="facts" component={Facts} />
       <Stack.Screen name="alert" component={AlertScreen} />
       <Stack.Screen name="dropdown" component={DropdownScreen} />
+      <Stack.Screen name="icon" component={IconScreen} />
+      <Stack.Screen name="input" component={InputsScreen} />
     </Stack.Navigator>
   )
 }
