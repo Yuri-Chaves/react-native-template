@@ -1,0 +1,20 @@
+import React, { createContext, useState } from 'react'
+
+import { {{pascalCase name}}ContextProps } from '../{{pascalCase name}}Types'
+
+export const {{pascalCase name}}Context = createContext<{{pascalCase name}}ContextProps>(
+  {} as {{pascalCase name}}ContextProps,
+)
+
+export function {{pascalCase name}}Provider({ children }: React.PropsWithChildren) {
+  const [example, setExample] = useState('This is an example')
+
+  const values: {{pascalCase name}}ContextProps = {
+    example,
+    setExample,
+  }
+
+  return (
+    <{{pascalCase name}}Context.Provider value={values}>{children}</{{pascalCase name}}Context.Provider>
+  )
+}

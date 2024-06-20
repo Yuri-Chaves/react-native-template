@@ -234,4 +234,108 @@ module.exports = function (plop) {
       return actions
     }
   })
+  plop.setGenerator('screen', {
+    description: 'Generate a new screen and her components',
+    prompts: [
+      {
+        type: 'list',
+        name: 'type',
+        message: 'Screen Stack',
+        choices: [
+          {
+            name: 'App Stack',
+            value: 'app',
+          },
+          {
+            name: 'Auth Stack',
+            value: 'auth',
+          },
+        ],
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Screen name',
+      },
+      {
+        type: 'confirm',
+        name: 'split',
+        message: 'Do you want to divide the screen into parts?',
+        default: false,
+      },
+      {
+        type: 'input',
+        name: 'parts',
+        message: 'Enter the name of each part separated by a comma(,):',
+        when: answers => answers.split,
+      },
+    ],
+    actions: data => {
+      let actions = [
+        {
+          type: 'modify',
+          path: `src/screens/${data.type}/index.ts`,
+          pattern: /(\/\/ Screens exports)/g,
+          transform: template => sortFile(template),
+          template:
+            "$1\nexport * from './{{pascalCase name}}/{{pascalCase name}}'",
+        },
+      ]
+      if (data && !data.split) {
+        actions.push({
+          type: 'add',
+          path: `src/screens/${data.type}/{{pascalCase name}}/{{pascalCase name}}.tsx`,
+          templateFile: 'templates/screen/simpleScreen.tsx.hbs',
+        })
+      }
+      if (data && data.split) {
+        const componentsNames = data.parts
+          .split(',')
+          .map(name => pascalCase(name))
+        actions.push({
+          type: 'add',
+          path: `src/screens/${data.type}/{{pascalCase name}}/{{pascalCase name}}.tsx`,
+          templateFile: 'templates/screen/splitScreen.tsx.hbs',
+          data: {
+            componentName: componentsNames,
+          },
+        })
+        actions.push({
+          type: 'add',
+          path: `src/screens/${data.type}/{{pascalCase name}}/{{pascalCase name}}Types.ts`,
+          templateFile: 'templates/screen/types.ts.hbs',
+        })
+        actions.push({
+          type: 'add',
+          path: `src/screens/${data.type}/{{pascalCase name}}/context/{{pascalCase name}}Provider.tsx`,
+          templateFile: 'templates/screen/provider.tsx.hbs',
+        })
+        actions.push({
+          type: 'add',
+          path: `src/screens/${data.type}/{{pascalCase name}}/context/use{{pascalCase name}}.ts`,
+          templateFile: 'templates/screen/useProvider.ts.hbs',
+        })
+        actions.push({
+          type: 'add',
+          path: `src/screens/${data.type}/{{pascalCase name}}/components/index.ts`,
+          templateFile: 'templates/screen/index.ts.hbs',
+          data: {
+            componentName: componentsNames,
+          },
+        })
+        componentsNames.forEach(componentName => {
+          actions.push({
+            type: 'add',
+            path: `src/screens/${data.type}/{{pascalCase name}}/components/${componentName}.tsx`,
+            templateFile: 'templates/screen/component.tsx.hbs',
+            data: {
+              componentName: componentName,
+              provider: pascalCase(data.name),
+            },
+          })
+        })
+      }
+      return actions
+    },
+  })
 }

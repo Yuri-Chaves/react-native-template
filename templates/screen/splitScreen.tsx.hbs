@@ -1,0 +1,20 @@
+import React from 'react'
+
+import { Screen } from '@components'
+
+{{#with componentName as |component|}}
+import { {{#each component as |componentName index|}}{{componentName}}{{#unless @last}}, {{/unless}}{{/each}} } from './components'
+{{/with}}
+import { {{pascalCase name}}Provider } from './context/{{pascalCase name}}Provider'
+
+export function {{pascalCase name}}() {
+  return (
+    <Screen>
+      <{{pascalCase name}}Provider>
+        {{#each componentName}}
+        <{{ this }} />
+        {{/each}}
+      </{{pascalCase name}}Provider>
+    </Screen>
+  )
+}
