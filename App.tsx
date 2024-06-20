@@ -5,7 +5,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { Router } from '@routes'
 import { useAuthCredentialsManager } from '@services'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { lightTheme } from '@theme'
+
+const queryClient = new QueryClient()
 
 function App(): React.JSX.Element {
   const { startAuthCredentials } = useAuthCredentialsManager()
@@ -15,11 +18,13 @@ function App(): React.JSX.Element {
   }, [])
 
   return (
-    <SafeAreaProvider>
-      <ThemeProvider theme={lightTheme}>
-        <Router />
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaProvider>
+        <ThemeProvider theme={lightTheme}>
+          <Router />
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </QueryClientProvider>
   )
 }
 
