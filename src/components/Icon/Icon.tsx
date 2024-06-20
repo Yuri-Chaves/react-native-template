@@ -45,6 +45,7 @@ const iconRegistry = {
   eyeOutline: icons.EyeOutline,
   formTextbox: icons.FormTextbox,
   formTextboxPassword: icons.FormTextboxPassword,
+  formatLetterSpacing: icons.FormatLetterSpacing,
   informationVariant: icons.InformationVariant,
   login: icons.Login,
 }
