@@ -30,6 +30,7 @@ export function Home({ navigation }: AppScreenProps<'home'>) {
             onPress={() => navigation.navigate('dropdown')}
           />
           <Button title="Alert" onPress={() => navigation.navigate('alert')} />
+          <Button title="Icons" onPress={() => navigation.navigate('icon')} />
         </Box>
         <Box flex={1} gap="s8">
           <Button
