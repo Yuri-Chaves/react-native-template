@@ -1,10 +1,14 @@
-import { Screen, Text } from '@components'
+import { Button, Screen } from '@components'
+import { AppScreenProps } from '@routes'
 import React from 'react'
 
-export function Home() {
+export function Home({ navigation }: AppScreenProps<'home'>) {
   return (
     <Screen>
-      <Text>Home</Text>
+      <Button
+        title="InfinityScroll"
+        onPress={() => navigation.navigate('facts')}
+      />
     </Screen>
   )
 }
