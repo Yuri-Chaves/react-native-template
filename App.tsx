@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { ThemeProvider } from '@shopify/restyle'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import { AlertComponent } from '@components'
 import { Router } from '@routes'
 import { useAuthCredentialsManager } from '@services'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -22,6 +23,7 @@ function App(): React.JSX.Element {
       <SafeAreaProvider>
         <ThemeProvider theme={lightTheme}>
           <Router />
+          <AlertComponent />
         </ThemeProvider>
       </SafeAreaProvider>
     </QueryClientProvider>
