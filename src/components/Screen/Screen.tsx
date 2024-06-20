@@ -28,7 +28,7 @@ export function Screen({
   scrollable = false,
   boxProps,
 }: ScreenProps) {
-  const { bottom } = useAppSafeArea()
+  const { bottom, top } = useAppSafeArea()
   const { colors } = useAppTheme()
 
   const Container = scrollable ? ScrollViewContainer : ViewContainer
@@ -40,7 +40,7 @@ export function Screen({
       <Container backgroundColor={colors.backgroundColor}>
         <Box
           paddingHorizontal="s16"
-          style={{ paddingBottom: bottom }}
+          style={{ paddingBottom: bottom, paddingTop: top }}
           alignItems="center"
           justifyContent="center"
           flex={1}
