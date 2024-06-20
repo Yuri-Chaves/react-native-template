@@ -12,12 +12,14 @@
       "@hooks": ["src/hooks"],
       "@icons": ["src/assets/icons"],
       "@images": ["src/assets/images"],
+      "@infra": ["src/infra"],
       "@instances": ["src/instances"],
       "@routes": ["src/routes"],
       "@screens": ["src/screens"],
       "@services": ["src/services"],
       "@test": ["src/test"],
       "@theme": ["src/theme"],
+      "@types": ["src/types"],
       "@utils": ["src/utils"],
       "test-utils": ["src/test/test-utils"]
     }
