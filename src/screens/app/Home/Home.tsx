@@ -24,10 +24,14 @@ export function Home({ navigation }: AppScreenProps<'home'>) {
         </Text>
       </Text>
       <Box flexDirection="row" gap="s12">
-        <Box flex={1}>
+        <Box flex={1} gap="s8">
+          <Button
+            title="Dropdown"
+            onPress={() => navigation.navigate('dropdown')}
+          />
           <Button title="Alert" onPress={() => navigation.navigate('alert')} />
         </Box>
-        <Box flex={1}>
+        <Box flex={1} gap="s8">
           <Button
             title="InfinityScroll"
             onPress={() => navigation.navigate('facts')}

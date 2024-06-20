@@ -1,10 +1,11 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { AlertScreen, Facts, Home } from '@screens'
+import { AlertScreen, DropdownScreen, Facts, Home } from '@screens'
 import React from 'react'
 
 export type AppStackParamList = {
   home: undefined
   facts: undefined
+  dropdown: undefined
   alert: undefined
 }
 
@@ -15,6 +16,7 @@ export function AppRoutes() {
       <Stack.Screen name="home" component={Home} />
       <Stack.Screen name="facts" component={Facts} />
       <Stack.Screen name="alert" component={AlertScreen} />
+      <Stack.Screen name="dropdown" component={DropdownScreen} />
     </Stack.Navigator>
   )
 }
