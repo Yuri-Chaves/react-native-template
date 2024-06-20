@@ -24,6 +24,13 @@ function pascalCase(text) {
 }
 
 module.exports = function (plop) {
+  plop.setHelper('if_eq', function (a, b, opts) {
+    if (a == b) {
+      return opts.fn(this);
+    } else {
+      return opts.inverse(this);
+    }
+  })
   plop.setGenerator('icon', {
     description: 'Generate an tsx icon to use with the Icon Component',
     prompts: [
@@ -102,5 +109,129 @@ module.exports = function (plop) {
 
       return actions
     },
+  })
+  plop.setGenerator('domain', {
+    description: 'Generate an API communication',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'domain name',
+      },
+      {
+        type: 'list',
+        name: 'method',
+        message: 'Select the HTTP method',
+        choices: [
+          {
+            name: 'Get',
+            value: 'get',
+            checked: true,
+          },
+          {
+            name: 'Post',
+            value: 'post',
+          },
+        ],
+      },
+      {
+        type: 'confirm',
+        name: 'withMock',
+        message: 'Do you want to create a mocks file?',
+        default: false,
+      },
+      {
+        type: 'confirm',
+        name: 'withUseCase',
+        message: 'Do you want to create an useCase?',
+        default: true,
+      },
+      {
+        type: 'input',
+        name: 'useCaseName',
+        message: 'useCase name(without "use" prefix)',
+      },
+      {
+        type: 'list',
+        name: 'getMode',
+        message: 'Select the response mode',
+        choices: [
+          {
+            name: 'Simple',
+            value: 'simple',
+            checked: true,
+          },
+          {
+            name: 'Paginated',
+            value: 'paginated',
+          },
+        ],
+        when: answers => answers.method === 'get',
+      },
+    ],
+    actions: data => {
+      const actions = [
+        {
+          type: 'add',
+          path: 'src/domain/{{pascalCase name}}/{{camelCase name}}Api.ts',
+          templateFile: 'templates/domain/api.ts.hbs',
+        },
+        {
+          type: 'add',
+          path: 'src/domain/{{pascalCase name}}/{{camelCase name}}Service.ts',
+          templateFile: 'templates/domain/service.ts.hbs',
+        },
+        {
+          type: 'add',
+          path: 'src/domain/{{pascalCase name}}/{{camelCase name}}Types.ts',
+          templateFile: 'templates/domain/types.ts.hbs',
+        },
+        {
+          type: 'modify',
+          path: 'src/domain/index.ts',
+          pattern: /(\/\/ Types)/g,
+          transform: template => sortPart(template, 'Types', '// End Types'),
+          template:
+            "$1\nexport * from './{{pascalCase name}}/{{camelCase name}}Types'",
+        },
+        {
+          type: 'modify',
+          path: 'src/domain/index.ts',
+          pattern: /(\/\/ Services)/g,
+          transform: template =>
+            sortPart(template, 'Services', '// End Services'),
+          template:
+            "$1\nexport * from './{{pascalCase name}}/{{camelCase name}}Service'",
+        },
+      ]
+      if (data && data.withMock) {
+        actions.push({
+          type: 'add',
+          path: 'src/domain/{{pascalCase name}}/{{camelCase name}}Mocks.ts',
+          templateFile: 'templates/domain/mocks.ts.hbs',
+        })
+      }
+      if (data && data.withUseCase) {
+        actions.push({
+          type: 'add',
+          path: 'src/domain/{{pascalCase name}}/useCases/use{{pascalCase name}}Example.ts',
+          templateFile: 'templates/domain/useCase.ts.hbs',
+        })
+        actions.push({
+          type: 'add',
+          path: 'src/domain/{{pascalCase name}}/useCases/index.ts',
+          templateFile: 'templates/domain/index.ts.hbs',
+        })
+        actions.push({
+          type: 'modify',
+          path: 'src/domain/index.ts',
+          pattern: /(\/\/ Use Cases)/g,
+          transform: template =>
+            sortPart(template, 'Use Cases', '// End Use Cases'),
+          template: "$1\nexport * from './{{pascalCase name}}/useCases'",
+        })
+      }
+      return actions
+    }
   })
 }

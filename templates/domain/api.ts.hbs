@@ -1,0 +1,13 @@
+import { catApi } from '@instances'
+
+import { {{#if_eq method "post"}}{{pascalCase name}}Body, {{/if_eq}}{{pascalCase name}}Response } from './{{camelCase name}}Types'
+
+async function example{{pascalCase name}}({{#if_eq method "post"}}props: {{pascalCase name}}Body{{/if_eq}}): Promise<{{pascalCase name}}Response> {
+  const response = await catApi.{{#if_eq method "post"}}post{{else}}get{{/if_eq}}<{{pascalCase name}}Response>('/example'{{#if_eq method "post"}}, { ...props }{{/if_eq}})
+
+  return response.data
+}
+
+export const {{camelCase name}}Api = {
+  example{{pascalCase name}},
+}

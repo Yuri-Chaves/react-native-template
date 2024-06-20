@@ -1,0 +1,12 @@
+import { {{camelCase name}}Api } from './{{camelCase name}}Api'
+import { {{#if_eq method "post"}}{{pascalCase name}}Body, {{/if_eq}}{{pascalCase name}}Response } from './{{camelCase name}}Types'
+
+async function example{{pascalCase name}}({{#if_eq method "post"}}props: {{pascalCase name}}Body{{/if_eq}}): Promise<{{pascalCase name}}Response> {
+  const data = await {{camelCase name}}Api.example{{pascalCase name}}({{#if_eq method "post"}}props{{/if_eq}})
+
+  return data
+}
+
+export const {{camelCase name}}Service = {
+  example{{pascalCase name}},
+}

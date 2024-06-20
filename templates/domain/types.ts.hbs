@@ -1,0 +1,8 @@
+{{#if_eq method "post"}}
+export type {{pascalCase name}}Body = {
+  name: string
+}
+{{/if_eq}}
+export type {{pascalCase name}}Response = {
+  example: string
+}

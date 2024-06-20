@@ -1,0 +1,59 @@
+{{#if_eq method "post"}}
+import { MutationOptions, QueryKeys } from '@infra';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { {{camelCase name}}Service } from '../{{camelCase name}}Service';
+import { {{pascalCase name}}Response, {{pascalCase name}}Body } from '../{{camelCase name}}Types';
+
+export function usePostCreate(options?: MutationOptions<{{pascalCase name}}Response>) {
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending, isError } = useMutation<
+    {{pascalCase name}}Response,
+    unknown,
+    {{pascalCase name}}Body
+  >({
+    mutationFn: ({name}) =>
+    {{camelCase name}}Service.example{{pascalCase name}}({name}),
+    onSuccess: post => {
+      queryClient.invalidateQueries({queryKey: [QueryKeys.example]});
+      if (options?.onSuccess) {
+        options.onSuccess(post);
+      }
+    },
+    onError: () => {
+      if (options?.onError) {
+        options.onError(options?.errorMessage || 'erro ao criar post');
+      }
+    },
+  });
+
+  return {
+    mutate,
+    isLoading: isPending,
+    isError,
+  };
+}
+{{else}}
+{{#if_eq getMode "simple"}}
+import { QueryKeys } from '@infra'
+import { useQuery } from '@tanstack/react-query'
+import { {{camelCase name}}Service } from '../{{camelCase name}}Service'
+
+export function use{{pascalCase useCaseName}}() {
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
+    queryKey: [QueryKeys.example], //? Use the real QueryKey of the service
+    queryFn: () => {{camelCase name}}Service.example{{pascalCase name}}(),
+    staleTime: 1000 * 10, // 10 seconds,
+  })
+
+  return {
+    example: data,
+    isLoading,
+    isError,
+    refetch,
+    isFetching,
+  }
+}
+{{/if_eq}}
+{{/if_eq}}
