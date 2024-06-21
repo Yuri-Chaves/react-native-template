@@ -38,6 +38,7 @@ export function Home({ navigation }: AppScreenProps<'home'>) {
             onPress={() => navigation.navigate('facts')}
           />
           <Button title="Inputs" onPress={() => navigation.navigate('input')} />
+          <Button title="Table" onPress={() => navigation.navigate('table')} />
         </Box>
       </Box>
     </Screen>

@@ -6,6 +6,7 @@ import {
   Home,
   IconScreen,
   InputsScreen,
+  TableScreen,
 } from '@screens'
 import React from 'react'
 
@@ -16,6 +17,7 @@ export type AppStackParamList = {
   alert: undefined
   icon: undefined
   input: undefined
+  table: undefined
 }
 
 const Stack = createNativeStackNavigator<AppStackParamList>()
@@ -28,6 +30,7 @@ export function AppRoutes() {
       <Stack.Screen name="dropdown" component={DropdownScreen} />
       <Stack.Screen name="icon" component={IconScreen} />
       <Stack.Screen name="input" component={InputsScreen} />
+      <Stack.Screen name="table" component={TableScreen} />
     </Stack.Navigator>
   )
 }
