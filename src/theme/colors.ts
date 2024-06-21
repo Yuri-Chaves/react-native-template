@@ -46,6 +46,10 @@ const lightTheme = {
   borderColor: palette.gray2,
 
   shadow: '#3333337F',
+
+  // ThemeLightDark
+  activeColor: '#F2D22E',
+  inactiveColor: palette.gray4,
 }
 
 const darkTheme: typeof lightTheme = {
@@ -56,6 +60,10 @@ const darkTheme: typeof lightTheme = {
   borderColor: palette.gray5,
 
   shadow: '#f4f5f67F',
+
+  // ThemeLightDark
+  activeColor: '#91CDF2',
+  inactiveColor: palette.gray3,
 }
 
 export const colors = {

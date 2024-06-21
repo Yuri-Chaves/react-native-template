@@ -4,15 +4,26 @@ import { ThemeProvider } from '@shopify/restyle'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { AlertComponent } from '@components'
+import { useAppColorScheme } from '@hooks'
 import { Router } from '@routes'
-import { useAuthCredentialsManager } from '@services'
+import {
+  settingsService,
+  useAppColor,
+  useAuthCredentialsManager,
+} from '@services'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { lightTheme } from '@theme'
+import { darkTheme, lightTheme } from '@theme'
 
 const queryClient = new QueryClient()
 
 function App(): React.JSX.Element {
+  useAppColorScheme()
   const { startAuthCredentials } = useAuthCredentialsManager()
+  const appColor = useAppColor()
+
+  useEffect(() => {
+    settingsService.handleStatusBar(appColor)
+  }, [appColor])
 
   useEffect(() => {
     startAuthCredentials()
@@ -21,7 +32,7 @@ function App(): React.JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
-        <ThemeProvider theme={lightTheme}>
+        <ThemeProvider theme={appColor === 'dark' ? darkTheme : lightTheme}>
           <Router />
           <AlertComponent />
         </ThemeProvider>

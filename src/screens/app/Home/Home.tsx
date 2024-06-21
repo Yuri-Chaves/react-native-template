@@ -1,6 +1,7 @@
 import { Box, Icon, Screen, Text } from '@components'
 import { AppScreenProps } from '@routes'
 import { useAuthCredentials, useAuthCredentialsManager } from '@services'
+import { ThemeLightDark } from '@theme'
 import React from 'react'
 import { ComponentsSection, StructureSection } from './components'
 
@@ -12,7 +13,7 @@ export function Home({ navigation }: AppScreenProps<'home'>) {
       scrollable
       boxProps={{ alignItems: 'flex-start', justifyContent: 'flex-start' }}>
       <Box flexDirection="row" gap="s8">
-        <Box flex={1}>
+        <Box flex={1} justifyContent="center">
           <Text preset="TitleLarge">
             👋 Welcome
             {authCredentials && (
@@ -28,7 +29,15 @@ export function Home({ navigation }: AppScreenProps<'home'>) {
             )}
           </Text>
         </Box>
-        <Icon name="exitRun" color="errorM" onPress={removeCredentials} />
+        <Box flexDirection="row" gap="s8">
+          <ThemeLightDark size={32} />
+          <Icon
+            name="exitRun"
+            color="errorM"
+            onPress={removeCredentials}
+            size={32}
+          />
+        </Box>
       </Box>
       <Text>
         😃 Thank you for using my{' '}
