@@ -12,7 +12,7 @@ export function IconScreen() {
         </Text>
         <Box
           flexWrap="wrap"
-          width={120}
+          width={152}
           alignSelf="center"
           flexDirection="row"
           gap="s8">
@@ -25,6 +25,7 @@ export function IconScreen() {
           <Icon name="chevronDown" />
           <Icon name="chevronUp" />
           <Icon name="delete" />
+          <Icon name="exitRun" />
           <Icon name="eye" />
           <Icon name="eyeOff" />
           <Icon name="eyeOffOutline" />

@@ -39,6 +39,7 @@ const iconRegistry = {
   chevronDown: icons.ChevronDown,
   chevronUp: icons.ChevronUp,
   delete: icons.Delete,
+  exitRun: icons.ExitRun,
   eye: icons.Eye,
   eyeOff: icons.EyeOff,
   eyeOffOutline: icons.EyeOffOutline,
