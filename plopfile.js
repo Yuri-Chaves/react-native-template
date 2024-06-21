@@ -141,17 +141,6 @@ module.exports = function (plop) {
         default: false,
       },
       {
-        type: 'confirm',
-        name: 'withUseCase',
-        message: 'Do you want to create an useCase?',
-        default: true,
-      },
-      {
-        type: 'input',
-        name: 'useCaseName',
-        message: 'useCase name(without "use" prefix)',
-      },
-      {
         type: 'list',
         name: 'getMode',
         message: 'Select the response mode',
@@ -167,6 +156,19 @@ module.exports = function (plop) {
           },
         ],
         when: answers => answers.method === 'get',
+      },
+      {
+        type: 'confirm',
+        name: 'withUseCase',
+        message: 'Do you want to create an useCase?',
+        default: true,
+        when: answers => answers.getMode === 'simple',
+      },
+      {
+        type: 'input',
+        name: 'useCaseName',
+        message: 'useCase name(without "use" prefix)',
+        when: answers => answers.withUseCase,
       },
     ],
     actions: data => {
