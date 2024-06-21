@@ -31,6 +31,8 @@ export function IconScreen() {
           <Icon name="eyeOutline" />
           <Icon name="formTextbox" />
           <Icon name="formTextboxPassword" />
+          <Icon name="formatLetterSpacing" />
+          <Icon name="help" />
           <Icon name="informationVariant" />
           <Icon name="login" />
         </Box>

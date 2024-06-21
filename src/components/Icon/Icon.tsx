@@ -46,6 +46,7 @@ const iconRegistry = {
   formTextbox: icons.FormTextbox,
   formTextboxPassword: icons.FormTextboxPassword,
   formatLetterSpacing: icons.FormatLetterSpacing,
+  help: icons.Help,
   informationVariant: icons.InformationVariant,
   login: icons.Login,
 }
