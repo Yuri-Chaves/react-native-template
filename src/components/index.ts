@@ -17,3 +17,4 @@ export * from './Forms/AuthForm/AuthForm'
 
 // Exporting Types
 export type { AlertOptions } from './Alert/AlertTypes'
+export type { TableDataType, TableHeaderType } from './Table/TableTypes'
