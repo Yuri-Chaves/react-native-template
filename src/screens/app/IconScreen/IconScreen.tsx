@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Icon, Screen, Text } from '@components'
+import { Box, Icon, Screen, Text, iconNames } from '@components'
 
 export function IconScreen() {
   return (
@@ -16,26 +16,9 @@ export function IconScreen() {
           alignSelf="center"
           flexDirection="row"
           gap="s8">
-          <Icon name="accountCircle" />
-          <Icon name="accountCircleOutline" />
-          <Icon name="alert" />
-          <Icon name="alertCircle" />
-          <Icon name="alertOctagon" />
-          <Icon name="checkCircle" />
-          <Icon name="chevronDown" />
-          <Icon name="chevronUp" />
-          <Icon name="delete" />
-          <Icon name="exitRun" />
-          <Icon name="eye" />
-          <Icon name="eyeOff" />
-          <Icon name="eyeOffOutline" />
-          <Icon name="eyeOutline" />
-          <Icon name="formTextbox" />
-          <Icon name="formTextboxPassword" />
-          <Icon name="formatLetterSpacing" />
-          <Icon name="help" />
-          <Icon name="informationVariant" />
-          <Icon name="login" />
+          {iconNames.map(name => (
+            <Icon name={name} size={32} color="backgroundContrast" key={name} />
+          ))}
         </Box>
       </Box>
       <Text preset="TitleLarge" weight="700" color="primary">
