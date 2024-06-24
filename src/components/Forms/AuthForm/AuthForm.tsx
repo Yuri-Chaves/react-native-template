@@ -57,6 +57,7 @@ export function AuthForm({
               errorMessage={fieldState.error?.message}
               leftIcon="accountCircleOutline"
               onSubmitEditing={() => passwordRef.current?.focus()}
+              helperText="Your first name."
             />
           )}
         />
