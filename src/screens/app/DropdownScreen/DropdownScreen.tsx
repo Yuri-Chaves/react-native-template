@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
 
-import { Button, Dropdown, DropdownItemType, Screen, Text } from '@components'
+import {
+  Box,
+  Button,
+  Dropdown,
+  DropdownItemType,
+  Screen,
+  Text,
+} from '@components'
 
 export function DropdownScreen() {
   const [selectedValue, setSelectedValue] = useState<DropdownItemType>()
+  const [leftIcon, setLeftIcon] = useState<boolean>(false)
   const dropdownDataExample: Array<DropdownItemType> = [
     {
       label: 'Option 1',
@@ -37,13 +45,22 @@ export function DropdownScreen() {
         data={dropdownDataExample}
         selectedValue={selectedValue}
         onChange={setSelectedValue}
+        leftIcon={leftIcon ? 'alert' : undefined}
       />
-      <Button
-        alignSelf="flex-end"
-        preset="outline"
-        title="Clear selection"
-        onPress={() => setSelectedValue(undefined)}
-      />
+      <Box flexDirection="row" gap="s8">
+        <Button
+          title="leftIcon"
+          flex={1}
+          preset={leftIcon ? 'primary' : 'outline'}
+          onPress={() => setLeftIcon(prev => !prev)}
+        />
+        <Button
+          preset="outline"
+          flex={1}
+          title="Clear selection"
+          onPress={() => setSelectedValue(undefined)}
+        />
+      </Box>
     </Screen>
   )
 }
