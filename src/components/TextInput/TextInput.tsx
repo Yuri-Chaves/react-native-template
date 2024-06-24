@@ -122,16 +122,19 @@ export function TextInput({
     )
   }
 
+  const [labelBoxHeight, setLabelBoxHeight] = useState<number>(0)
+  const dynamicTop = -(labelBoxHeight / 2 + 1)
+
   return (
     <Box
       flexDirection="row"
       flexGrow={inRow ? 1 : undefined}
       flexShrink={inRow ? 1 : undefined}>
-      <PressableBox onPress={focus} paddingTop="s4" flex={1}>
+      <PressableBox onPress={focus} marginTop="s4" flex={1}>
         <Box
           flexDirection="row"
           alignItems="center"
-          justifyContent="center"
+          justifyContent="flex-start"
           backgroundColor={bg}
           height={42}
           paddingHorizontal="s8"
@@ -146,15 +149,18 @@ export function TextInput({
               onPress={fnOnPressLIcon}
             />
           )}
-          <Box flexDirection="row" flex={1} alignItems="center">
+          <Box flexDirection="row" flex={1} height="100%" alignItems="center">
             <Box
-              top={inFocus || rNTextInputProps.value ? -15.0 : 5}
+              top={inFocus || rNTextInputProps.value ? dynamicTop : undefined}
               paddingHorizontal="s4"
               flexDirection="row"
               position="absolute"
               alignItems="center"
               overflow="hidden"
-              justifyContent="center">
+              justifyContent="center"
+              onLayout={event =>
+                setLabelBoxHeight(event.nativeEvent.layout.height)
+              }>
               <Box
                 flex={1}
                 position="absolute"

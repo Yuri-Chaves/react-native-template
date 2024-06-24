@@ -62,7 +62,7 @@ export function Dropdown({
   const $textStyle: TextStyle = {
     fontFamily: fontFamily,
     ...$fontSizes.LabelMedium,
-    marginLeft: leftIcon ? 6 : undefined,
+    marginLeft: leftIcon ? 6 : 4,
   }
 
   const $dropdown: ViewStyle = {
@@ -74,9 +74,13 @@ export function Dropdown({
   }
   const $placeholder: TextStyle = {
     color: colors[stroke],
-    marginLeft: leftIcon ? 6 : undefined,
+    marginLeft: leftIcon ? 8 : undefined,
     ...$textStyle,
   }
+
+  const [labelBoxHeight, setLabelBoxHeight] = useState<number>(0)
+
+  const dynamicTop = -(labelBoxHeight / 2 - 1)
 
   function renderLabel() {
     if (selectedValue) {
@@ -87,8 +91,11 @@ export function Dropdown({
           justifyContent="center"
           paddingHorizontal="s4"
           overflow="hidden"
-          left={leftIcon ? 30 : 4}
-          top={-7}>
+          left={leftIcon ? 30 : 8}
+          top={dynamicTop}
+          onLayout={event =>
+            setLabelBoxHeight(event.nativeEvent.layout.height)
+          }>
           <Box
             position="absolute"
             width={400}
