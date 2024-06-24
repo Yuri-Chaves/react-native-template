@@ -1,0 +1,4 @@
+{
+  "plop": "plop",
+  "build": "cd android && ./gradlew assembleRelease"
+}
