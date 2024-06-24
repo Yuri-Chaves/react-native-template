@@ -54,3 +54,7 @@ const iconRegistry = {
 
 type IconType = typeof iconRegistry
 export type IconName = keyof IconType
+
+export const iconNames: Array<IconName> = Object.keys(
+  iconRegistry,
+) as Array<IconName>
